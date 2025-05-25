@@ -23,6 +23,18 @@ export interface Experience {
   technologies: string[];
 }
 
+export interface Achievement {
+  id: string;
+  title: string;
+  description: string;
+  type: 'talk' | 'award' | 'competition';
+  link?: string;
+  event?: string;
+  year?: string;
+  details?: string;
+  icon: string;
+}
+
 export interface PersonalInfo {
   name: string;
   title: string;
@@ -44,6 +56,56 @@ export const personalInfo: PersonalInfo = {
   github: "https://github.com/yashpreetbathla",
   profileImage: "../CAM00614_Original.jpeg",
 };
+
+export const achievements: Achievement[] = [
+  {
+    id: "1",
+    title: "React Nexus Speaker",
+    description: "Delivered a talk on innovative approaches to CSR, SSR, and server components in modern web applications",
+    type: "talk",
+    event: "React Nexus",
+    link: "https://www.youtube.com/watch?v=Dyu3h06Sy1A&t=18s&ab_channel=reactify",
+    details: "Explored cutting-edge rendering strategies and their impact on web performance and user experience",
+    icon: "🎤"
+  },
+  {
+    id: "2",
+    title: "Google DevFest Delhi Speaker",
+    description: "Presented 'From Client to Server: But Why?' exploring the role of SSR in enhancing user experiences",
+    type: "talk",
+    event: "Google DevFest Delhi 2024",
+    link: "https://gdg.community.dev/events/details/google-gdg-new-delhi-presents-devfest-new-delhi-2024/cohost-gdg-new-delhi",
+    details: "Deep dive into server-side rendering benefits and implementation strategies for modern web applications",
+    icon: "🎙️"
+  },
+  {
+    id: "3",
+    title: "Superstar Engineer Award",
+    description: "Recognized for exceptional engineering contributions and leadership at Tessell",
+    type: "award",
+    event: "Tessell",
+    year: "2024",
+    details: "Awarded for outstanding technical contributions including 40% bundle size reduction and innovative architecture design",
+    icon: "🏆"
+  },
+  {
+    id: "4",
+    title: "Codeforces Expert",
+    description: "Achieved Expert rating on Codeforces competitive programming platform",
+    type: "competition",
+    details: "Demonstrated advanced problem-solving skills and algorithmic thinking through consistent high performance",
+    icon: "🧠"
+  },
+  {
+    id: "5",
+    title: "Google Kickstart 2020",
+    description: "Ranked 529 out of 11,000+ participants in Google Kickstart 2020",
+    type: "competition",
+    year: "2020",
+    details: "Top 5% performance in Google's premier competitive programming competition",
+    icon: "🧮"
+  }
+];
 
 export const projects: Project[] = [
   {
