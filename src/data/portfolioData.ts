@@ -85,7 +85,7 @@ export const achievements: Achievement[] = [
     type: "award",
     event: "Tessell",
     year: "2024",
-    details: "Awarded for outstanding technical contributions including 40% bundle size reduction and innovative architecture design",
+    details: "Single-handedly revitalized the outdated DEMO website, aligning it with the Tessell App. Devised a novel coding architecture enabling seamless addition of new features within a day. Implemented Service Details page for Vector DB services with configurable UI framework. Actively engages in PR reviews, addresses critical staging and production bugs, and provides valuable assistance to team members.",
     icon: "🏆"
   },
   {
