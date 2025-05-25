@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  base: mode === "development" ? "/" : "/notion-flow-portfolio",
+  base: mode === "development" ? "/" : "./",
   plugins: [react(), mode === "development" && componentTagger()].filter(
     Boolean
   ),
