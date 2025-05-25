@@ -174,7 +174,7 @@ export const projects: Project[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
     githubUrl: "https://github.com/yashpreetbathla/devTinder-web",
-    featured: false,
+    featured: true,
   },
 ];
 
