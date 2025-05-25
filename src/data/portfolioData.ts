@@ -27,7 +27,7 @@ export interface Achievement {
   id: string;
   title: string;
   description: string;
-  type: 'talk' | 'award' | 'competition';
+  type: "talk" | "award" | "competition";
   link?: string;
   event?: string;
   year?: string;
@@ -61,60 +61,51 @@ export const achievements: Achievement[] = [
   {
     id: "1",
     title: "React Nexus Speaker",
-    description: "Delivered a talk on innovative approaches to CSR, SSR, and server components in modern web applications",
+    description:
+      "Delivered a talk on innovative approaches to CSR, SSR, and server components in modern web applications",
     type: "talk",
     event: "React Nexus",
     link: "https://www.youtube.com/watch?v=Dyu3h06Sy1A&t=18s&ab_channel=reactify",
-    details: "Explored cutting-edge rendering strategies and their impact on web performance and user experience",
-    icon: "🎤"
+    details:
+      "Explored cutting-edge rendering strategies and their impact on web performance and user experience",
+    icon: "🎤",
   },
   {
     id: "2",
     title: "Google DevFest Delhi Speaker",
-    description: "Presented 'From Client to Server: But Why?' exploring the role of SSR in enhancing user experiences",
+    description:
+      "Presented 'From Client to Server: But Why?' exploring the role of SSR in enhancing user experiences",
     type: "talk",
     event: "Google DevFest Delhi 2024",
     link: "https://gdg.community.dev/events/details/google-gdg-new-delhi-presents-devfest-new-delhi-2024/cohost-gdg-new-delhi",
-    details: "Deep dive into server-side rendering benefits and implementation strategies for modern web applications",
-    icon: "🎙️"
+    details:
+      "Deep dive into server-side rendering benefits and implementation strategies for modern web applications",
+    icon: "🎙️",
   },
   {
     id: "3",
     title: "Superstar Engineer Award",
-    description: "Recognized for exceptional engineering contributions and leadership at Tessell",
+    description:
+      "Recognized for exceptional engineering contributions and leadership at Tessell",
     type: "award",
     event: "Tessell",
     year: "2024",
-    details: "Single-handedly revitalized the outdated DEMO website, aligning it with the Tessell App. Devised a novel coding architecture enabling seamless addition of new features within a day. Implemented Service Details page for Vector DB services with configurable UI framework. Actively engages in PR reviews, addresses critical staging and production bugs, and provides valuable assistance to team members.",
-    icon: "🏆"
+    details:
+      "Single-handedly revitalized the outdated DEMO website, aligning it with the Tessell App. Devised a novel coding architecture enabling seamless addition of new features within a day. Implemented Service Details page for Vector DB services with configurable UI framework. Actively engages in PR reviews, addresses critical staging and production bugs, and provides valuable assistance to team members.",
+    icon: "🏆",
   },
   {
     id: "4",
     title: "Social Geek Award",
-    description: "Recognized for outstanding social and technical contributions during tenure at Yugabyte",
+    description:
+      "Recognized for outstanding social and technical contributions during tenure at Yugabyte",
     type: "award",
     event: "Yugabyte Annual Award Function",
     year: "2023",
-    details: "Awarded for exceptional collaboration, knowledge sharing, and positive impact on team culture",
-    icon: "🏅"
+    details:
+      "Awarded for exceptional collaboration, knowledge sharing, and positive impact on team culture",
+    icon: "🏅",
   },
-  {
-    id: "5",
-    title: "Codeforces Expert",
-    description: "Achieved Expert rating on Codeforces competitive programming platform",
-    type: "competition",
-    details: "Demonstrated advanced problem-solving skills and algorithmic thinking through consistent high performance",
-    icon: "🧠"
-  },
-  {
-    id: "6",
-    title: "Google Kickstart 2020",
-    description: "Ranked 529 out of 11,000+ participants in Google Kickstart 2020",
-    type: "competition",
-    year: "2020",
-    details: "Top 5% performance in Google's premier competitive programming competition",
-    icon: "🧮"
-  }
 ];
 
 export const projects: Project[] = [
@@ -283,7 +274,7 @@ export const experiences: Experience[] = [
       "Worked with Prime Videos X-Ray Team on sports visualization for rugby and football",
       "Designed and implemented notification system for CVAT job creation using AWS CDK, SNS, Lambda, and Slack/Chime bot",
       "Created document for better understanding of CVAT and implemented multiple functionalities in the open source tool",
-      "Built a generic player component with pluggable and extendable design using ReactJS that provides functionality of changing scrubbing speed and key binding"
+      "Built a generic player component with pluggable and extendable design using ReactJS that provides functionality of changing scrubbing speed and key binding",
     ],
     technologies: ["React", "Redux"],
   },
@@ -295,8 +286,8 @@ export const experiences: Experience[] = [
     description: [
       "Worked with web creation pod team responsible for developing and maintaining Jeet11 app",
       "Implemented features and services for CMS tools internal to organization",
-      "Followed best practices like TDD and maintained high quality code for 100K production users"
+      "Followed best practices like TDD and maintained high quality code for 100K production users",
     ],
     technologies: ["React", "Redux", "Next.js"],
-  }
+  },
 ];
