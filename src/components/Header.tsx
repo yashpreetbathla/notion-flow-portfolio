@@ -1,23 +1,24 @@
-
-import React, { useState } from 'react';
-import { Menu, X, Home, User, Briefcase, Code, Mail } from 'lucide-react';
-import { ThemeToggle } from './ThemeToggle';
+import React, { useState } from "react";
+import { Menu, X, Home, User, Briefcase, Code, Mail } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
+import { useTheme } from "./ThemeProvider";
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme } = useTheme();
 
   const navItems = [
-    { icon: Home, label: 'Home', href: '#home' },
-    { icon: User, label: 'About', href: '#about' },
-    { icon: Briefcase, label: 'Experience', href: '#experience' },
-    { icon: Code, label: 'Projects', href: '#projects' },
-    { icon: Mail, label: 'Contact', href: '#contact' },
+    { icon: Home, label: "Home", href: "#home" },
+    { icon: User, label: "About", href: "#about" },
+    { icon: Briefcase, label: "Experience", href: "#experience" },
+    { icon: Code, label: "Projects", href: "#projects" },
+    { icon: Mail, label: "Contact", href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setIsMenuOpen(false);
   };
@@ -26,9 +27,16 @@ export const Header: React.FC = () => {
     <header className="fixed top-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 z-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="font-bold text-xl text-gray-900 dark:text-white">
-            Portfolio
-          </div>
+          <button
+            onClick={() => scrollToSection("#home")}
+            className="h-16 w-16 hover:scale-105 transition-transform duration-200"
+          >
+            <img
+              src={theme === "dark" ? "../YPB-Dark.png" : "../YPB-light.png"}
+              alt="Yashpreet Bathla"
+              className="w-16 h-16 object-cover"
+            />
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
@@ -46,7 +54,7 @@ export const Header: React.FC = () => {
 
           <div className="flex items-center space-x-4">
             <ThemeToggle />
-            
+
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
