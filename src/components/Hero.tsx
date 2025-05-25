@@ -1,25 +1,27 @@
-
-import React from 'react';
-import { ArrowDown, Download, ExternalLink } from 'lucide-react';
-import { personalInfo } from '../data/portfolioData';
+import React from "react";
+import { ArrowDown, Download, ExternalLink } from "lucide-react";
+import { personalInfo } from "../data/portfolioData";
 
 export const Hero: React.FC = () => {
   const scrollToAbout = () => {
-    const element = document.querySelector('#about');
+    const element = document.querySelector("#about");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 pt-16">
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 pt-16"
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center space-y-8 animate-fade-in">
           <div className="relative">
             <img
               src={personalInfo.profileImage}
               alt={personalInfo.name}
-              className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto border-4 border-white dark:border-gray-700 shadow-xl"
+              className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto border-4 border-white dark:border-gray-700 shadow-xl object-cover"
             />
             <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white dark:border-gray-900"></div>
           </div>
@@ -44,7 +46,7 @@ export const Hero: React.FC = () => {
               <span>Learn More</span>
               <ArrowDown className="w-4 h-4" />
             </button>
-            
+
             <a
               href="/resume.pdf"
               className="px-8 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg font-medium transition-colors duration-200 flex items-center space-x-2"
