@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { ArrowDown, Download, ExternalLink } from "lucide-react";
 import { personalInfo } from "../data/portfolioData";
-import { TypingAnimation } from "./TypingAnimation";
+import { BackForthTyping } from "./BackForthTyping";
 
 export const Hero: React.FC = () => {
   const [showContent, setShowContent] = useState(false);
@@ -51,9 +51,10 @@ export const Hero: React.FC = () => {
                 showContent ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
               }`}
             >
-              <TypingAnimation 
+              <BackForthTyping 
                 text={personalInfo.title}
-                speed={80}
+                speed={100}
+                pauseDuration={3000}
                 className="font-medium"
               />
             </div>
