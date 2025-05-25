@@ -90,6 +90,16 @@ export const achievements: Achievement[] = [
   },
   {
     id: "4",
+    title: "Social Geek Award",
+    description: "Recognized for outstanding social and technical contributions during tenure at Yugabyte",
+    type: "award",
+    event: "Yugabyte Annual Award Function",
+    year: "2023",
+    details: "Awarded for exceptional collaboration, knowledge sharing, and positive impact on team culture",
+    icon: "🏅"
+  },
+  {
+    id: "5",
     title: "Codeforces Expert",
     description: "Achieved Expert rating on Codeforces competitive programming platform",
     type: "competition",
@@ -97,7 +107,7 @@ export const achievements: Achievement[] = [
     icon: "🧠"
   },
   {
-    id: "5",
+    id: "6",
     title: "Google Kickstart 2020",
     description: "Ranked 529 out of 11,000+ participants in Google Kickstart 2020",
     type: "competition",
