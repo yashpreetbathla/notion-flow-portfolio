@@ -1,28 +1,29 @@
-
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Github, ExternalLink } from 'lucide-react';
-import { personalInfo } from '../data/portfolioData';
+import React, { useState } from "react";
+import { Mail, Phone, MapPin, Send, Github, ExternalLink } from "lucide-react";
+import { personalInfo } from "../data/portfolioData";
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission - could integrate with email service
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+    console.log("Form submitted:", formData);
+    alert("Thank you for your message! I'll get back to you soon.");
+    setFormData({ name: "", email: "", message: "" });
   };
 
   return (
@@ -33,7 +34,8 @@ export const Contact: React.FC = () => {
             Get In Touch
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
+            I'm always open to discussing new opportunities, interesting
+            projects, or just having a chat about technology.
           </p>
         </div>
 
@@ -45,8 +47,8 @@ export const Contact: React.FC = () => {
                 Let's Connect
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
-                Feel free to reach out if you want to collaborate on a project, need help with development work, 
-                or just want to connect.
+                Feel free to reach out if you want to collaborate on a project,
+                need help with development work, or just want to connect.
               </p>
             </div>
 
@@ -56,8 +58,13 @@ export const Contact: React.FC = () => {
                   <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div>
-                  <p className="font-medium text-gray-900 dark:text-white">Email</p>
-                  <a href={`mailto:${personalInfo.email}`} className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  <p className="font-medium text-gray-900 dark:text-white">
+                    Email
+                  </p>
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
                     {personalInfo.email}
                   </a>
                 </div>
@@ -68,8 +75,12 @@ export const Contact: React.FC = () => {
                   <MapPin className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div>
-                  <p className="font-medium text-gray-900 dark:text-white">Location</p>
-                  <p className="text-gray-600 dark:text-gray-300">{personalInfo.location}</p>
+                  <p className="font-medium text-gray-900 dark:text-white">
+                    Location
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {personalInfo.location}
+                  </p>
                 </div>
               </div>
 
@@ -78,8 +89,15 @@ export const Contact: React.FC = () => {
                   <ExternalLink className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div>
-                  <p className="font-medium text-gray-900 dark:text-white">LinkedIn</p>
-                  <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  <p className="font-medium text-gray-900 dark:text-white">
+                    LinkedIn
+                  </p>
+                  <a
+                    href={personalInfo.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
                     Connect with me
                   </a>
                 </div>
@@ -90,8 +108,15 @@ export const Contact: React.FC = () => {
                   <Github className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div>
-                  <p className="font-medium text-gray-900 dark:text-white">GitHub</p>
-                  <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  <p className="font-medium text-gray-900 dark:text-white">
+                    GitHub
+                  </p>
+                  <a
+                    href={personalInfo.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
                     View my work
                   </a>
                 </div>
@@ -100,7 +125,7 @@ export const Contact: React.FC = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+          {/* <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -158,7 +183,7 @@ export const Contact: React.FC = () => {
                 <span>Send Message</span>
               </button>
             </form>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
