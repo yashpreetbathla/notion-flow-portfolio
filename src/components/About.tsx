@@ -1,6 +1,5 @@
-
 import React, { useEffect, useRef, useState } from 'react';
-import { MapPin, Mail, ExternalLink } from 'lucide-react';
+import { Mail, ExternalLink, MapPin, X } from 'lucide-react';
 import { personalInfo, skills } from '../data/portfolioData';
 
 export const About: React.FC = () => {
@@ -63,6 +62,12 @@ export const About: React.FC = () => {
                 <ExternalLink className="w-5 h-5 text-blue-600 dark:text-blue-400 group-hover:animate-pulse" />
                 <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   LinkedIn Profile
+                </a>
+              </div>
+              <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-300 group hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <X className="w-5 h-5 text-blue-600 dark:text-blue-400 group-hover:animate-pulse" />
+                <a href="https://x.com/yashpreetOnX" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  X Profile
                 </a>
               </div>
             </div>

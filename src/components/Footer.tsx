@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Heart, Github, ExternalLink, Mail } from 'lucide-react';
+import { Heart, Github, ExternalLink, Mail, X } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 export const Footer: React.FC = () => {
@@ -69,6 +69,15 @@ export const Footer: React.FC = () => {
               >
                 <ExternalLink className="w-4 h-4" />
                 <span>LinkedIn</span>
+              </a>
+              <a
+                href="https://x.com/yashpreetOnX"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+              >
+                <X className="w-4 h-4" />
+                <span>X</span>
               </a>
             </div>
           </div>
