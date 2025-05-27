@@ -4,7 +4,6 @@ import { personalInfo } from "../data/portfolioData";
 import { BackForthTyping } from "./BackForthTyping";
 import profileImage from "../assets/CAM00614_Original.jpeg";
 import { ViewIndicator } from "./ViewIndicator";
-import { ViewCounter } from "./ViewCounter";
 
 interface HeroProps {
   className?: string;
