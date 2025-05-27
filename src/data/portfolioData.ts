@@ -50,7 +50,7 @@ export const personalInfo: PersonalInfo = {
   name: "Yashpreet Bathla",
   title: "Senior Software Engineer",
   bio: "Passionate Software Engineer with a knack for building blazing-fast, beautiful, and scalable user interfaces. I specialize in React, TypeScript, and modern UI architecture. I love clean code, scalable design systems, and driving meaningful product decisions.",
-  location: "Delhi, India",
+  location: "Bangalore, India",
   email: "yashpreetbathla@gmail.com",
   linkedin: "https://www.linkedin.com/in/yashpreetbathla/",
   github: "https://github.com/yashpreetbathla",
