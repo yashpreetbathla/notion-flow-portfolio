@@ -3,7 +3,12 @@ import { ArrowDown, Download, ExternalLink } from "lucide-react";
 import { personalInfo } from "../data/portfolioData";
 import { BackForthTyping } from "./BackForthTyping";
 import profileImage from "../assets/CAM00614_Original.jpeg";
+import { ViewIndicator } from "./ViewIndicator";
 import { ViewCounter } from "./ViewCounter";
+
+interface HeroProps {
+  className?: string;
+}
 
 export const Hero: React.FC = () => {
   const [showContent, setShowContent] = useState(false);
@@ -34,12 +39,14 @@ export const Hero: React.FC = () => {
                 alt={personalInfo.name}
                 className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto border-4 border-white dark:border-gray-700 shadow-xl object-cover transition-transform duration-300 hover:scale-105"
               />
-              <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white dark:border-gray-900 animate-pulse-slow"></div>
+              <div className="absolute -bottom-2 -right-2">
+                <ViewIndicator />
+              </div>
             </div>
           </div>
 
           <div className="space-y-4">
-            <div className="flex justify-between items-center">
+            <div className="text-center">
               <h1
                 className={`text-4xl md:text-6xl font-bold text-gray-900 dark:text-white transition-all duration-700 ${
                   showContent ? "animate-fade-in-up" : "opacity-0 translate-y-8"
@@ -47,7 +54,6 @@ export const Hero: React.FC = () => {
               >
                 {personalInfo.name}
               </h1>
-              <ViewCounter />
             </div>
 
             <div

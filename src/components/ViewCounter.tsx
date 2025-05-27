@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { incrementViewCount } from '../firebase';
+import React, { useEffect, useState } from "react";
+import { incrementViewCount } from "../firebase";
 
 export const ViewCounter: React.FC = () => {
   const [views, setViews] = useState<number>(0);
@@ -11,7 +11,7 @@ export const ViewCounter: React.FC = () => {
         const viewCount = await incrementViewCount();
         setViews(viewCount);
       } catch (error) {
-        console.error('Error fetching view count:', error);
+        console.error("Error fetching view count:", error);
       } finally {
         setIsLoading(false);
       }
