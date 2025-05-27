@@ -187,6 +187,70 @@ There are several ways of editing your application.
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
+## 🖼️ Customizing Images
+
+1. **Profile Image**:
+   - Place your profile image in the `src/assets` directory
+   - Update the `profileImageUrl` in `src/data/portfolioData.ts`
+   - The image should be a square (1:1 ratio) for best results
+
+2. **Project Images**:
+   - Add your project images to `src/assets/projects`
+   - Update the image paths in your project data in `src/data/projects.ts`
+   - Images should be optimized for web (recommended size: 800x600px)
+
+## 📝 Customizing Portfolio Data
+
+1. **Personal Information**:
+   - Edit `src/data/portfolioData.ts` to update:
+     - Your name
+     - Profile image URL
+     - Social media links
+     - Contact information
+
+2. **Work Experience**:
+   - Edit `src/data/experience.ts` to add or modify:
+     - Company names
+     - Job titles
+     - Dates
+     - Achievements
+     - Technologies used
+
+3. **Projects**:
+   - Edit `src/data/projects.ts` to add or modify:
+     - Project names
+     - Descriptions
+     - Technologies used
+     - GitHub links
+     - Live demo links
+     - Featured images
+
+4. **Skills**:
+   - Edit `src/data/skills.ts` to add or modify:
+     - Programming languages
+     - Frameworks
+     - Tools
+     - Proficiency levels
+
+5. **Education**:
+   - Edit `src/data/education.ts` to add or modify:
+     - School names
+     - Degrees
+     - Dates
+     - Achievements
+
+## 🎨 Styling Customization
+
+1. **Colors**:
+   - Update the color scheme in `src/tailwind.config.js`
+   - Modify the theme colors in `src/theme.ts`
+
+2. **Layout**:
+   - Adjust spacing and sizing in `src/styles/globals.css`
+   - Modify animations in `src/styles/animation.css`
+
+## 🤝 Let's Connect
+
 Follow these steps:
 
 ```sh
@@ -198,6 +262,45 @@ cd <YOUR_PROJECT_NAME>
 
 # Step 3: Install the necessary dependencies.
 npm i
+
+# Optional: Set up view counter (skip if not needed)
+# 1. Create a Firebase project at https://console.firebase.google.com/
+# 2. Enable Realtime Database
+# 3. Add these security rules to your Realtime Database:
+{
+  "rules": {
+    "portfolio": {
+      "views": {
+        ".read": true,
+        ".write": "newData.val() === (data.exists() ? data.val() : 0) + 1",
+        ".validate": "newData.val() > 0 && newData.val() <= 1000000"
+      }
+    }
+  }
+}
+
+# 4. Create a .env file with your Firebase credentials:
+VITE_FIREBASE_API_KEY="your-api-key"
+VITE_FIREBASE_AUTH_DOMAIN="your-auth-domain"
+VITE_FIREBASE_DATABASE_URL="your-database-url"
+VITE_FIREBASE_PROJECT_ID="your-project-id"
+VITE_FIREBASE_STORAGE_BUCKET="your-storage-bucket"
+VITE_FIREBASE_MESSAGING_SENDER_ID="your-messaging-sender-id"
+VITE_FIREBASE_APP_ID="your-app-id"
+
+# 5. In your Hero component, set showViews={true} to enable the view counter
+# 6. If you're deploying to GitHub Pages:
+#    - Go to GitHub repository settings -> Secrets and variables -> Actions
+#    - Add these secrets with the same values as your .env file:
+#      VITE_FIREBASE_API_KEY
+#      VITE_FIREBASE_AUTH_DOMAIN
+#      VITE_FIREBASE_DATABASE_URL
+#      VITE_FIREBASE_PROJECT_ID
+#      VITE_FIREBASE_STORAGE_BUCKET
+#      VITE_FIREBASE_MESSAGING_SENDER_ID
+#      VITE_FIREBASE_APP_ID
+#      VITE_FIREBASE_ENABLE_VIEW_COUNTER (set to "true" or "false")
+```
 
 # Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev

@@ -8,9 +8,13 @@ import { ViewCounter } from "./ViewCounter";
 
 interface HeroProps {
   className?: string;
+  showViews?: boolean;
 }
 
-export const Hero: React.FC = () => {
+export const Hero: React.FC<HeroProps> = ({
+  className = "",
+  showViews = import.meta.env.VITE_FIREBASE_ENABLE_VIEW_COUNTER === "true",
+}) => {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
@@ -39,9 +43,11 @@ export const Hero: React.FC = () => {
                 alt={personalInfo.name}
                 className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto border-4 border-white dark:border-gray-700 shadow-xl object-cover transition-transform duration-300 hover:scale-105"
               />
-              <div className="absolute -bottom-2 -right-2">
-                <ViewIndicator />
-              </div>
+              {showViews && (
+                <div className="absolute -bottom-2 -right-2">
+                  <ViewIndicator />
+                </div>
+              )}
             </div>
           </div>
 
