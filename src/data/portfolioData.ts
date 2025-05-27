@@ -54,7 +54,7 @@ export const personalInfo: PersonalInfo = {
   email: "yashpreetbathla@gmail.com",
   linkedin: "https://www.linkedin.com/in/yashpreetbathla/",
   github: "https://github.com/yashpreetbathla",
-  profileImage: "../CAM00614_Original.jpeg",
+  profileImage: "../assets/CAM00614_Original.jpeg",
 };
 
 export const achievements: Achievement[] = [

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Menu, X, Home, User, Briefcase, Code, Mail } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { useTheme } from "./ThemeProvider";
+import YPBDark from "../assets/YPB-Dark.png";
+import YPBLight from "../assets/YPB-Light.png";
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,7 +34,7 @@ export const Header: React.FC = () => {
             className="h-16 w-16 hover:scale-105 transition-transform duration-200"
           >
             <img
-              src={theme === "dark" ? "../YPB-Dark.png" : "../YPB-light.png"}
+              src={theme === "dark" ? YPBDark : YPBLight}
               alt="Yashpreet Bathla"
               className="w-16 h-16 object-cover"
             />

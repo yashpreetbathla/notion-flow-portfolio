@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ArrowDown, Download, ExternalLink } from "lucide-react";
 import { personalInfo } from "../data/portfolioData";
 import { BackForthTyping } from "./BackForthTyping";
+import YPBDp from "../assets/CAM00614_Original.jpeg";
 
 export const Hero: React.FC = () => {
   const [showContent, setShowContent] = useState(false);
@@ -28,7 +29,7 @@ export const Hero: React.FC = () => {
           <div className="relative animate-fade-in">
             <div className="animate-float">
               <img
-                src={personalInfo.profileImage}
+                src={YPBDp}
                 alt={personalInfo.name}
                 className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto border-4 border-white dark:border-gray-700 shadow-xl object-cover transition-transform duration-300 hover:scale-105"
               />
