@@ -43,7 +43,7 @@ export interface PersonalInfo {
   email: string;
   linkedin: string;
   github: string;
-  profileImage: string;
+  profileImageUrl: string | null;
 }
 
 export const personalInfo: PersonalInfo = {
@@ -54,7 +54,7 @@ export const personalInfo: PersonalInfo = {
   email: "yashpreetbathla@gmail.com",
   linkedin: "https://www.linkedin.com/in/yashpreetbathla/",
   github: "https://github.com/yashpreetbathla",
-  profileImage: "../assets/CAM00614_Original.jpeg",
+  profileImageUrl: null,
 };
 
 export const achievements: Achievement[] = [
