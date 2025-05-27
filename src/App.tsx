@@ -13,7 +13,13 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter
+        basename={
+          process.env.NODE_ENV === "development"
+            ? "/"
+            : "/notion-flow-portfolio"
+        }
+      >
         <Routes>
           <Route path="/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
