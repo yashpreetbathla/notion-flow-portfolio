@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, Send, Github, ExternalLink } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Github,
+  ExternalLink,
+  X,
+} from "lucide-react";
 import { personalInfo } from "../data/portfolioData";
 
 export const Contact: React.FC = () => {
@@ -99,6 +107,25 @@ export const Contact: React.FC = () => {
                     className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
                     Connect with me
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                  <X className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                </div>
+                <div>
+                  <p className="font-medium text-gray-900 dark:text-white">
+                    X
+                  </p>
+                  <a
+                    href="https://x.com/yashpreetOnX"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    Follow me
                   </a>
                 </div>
               </div>
