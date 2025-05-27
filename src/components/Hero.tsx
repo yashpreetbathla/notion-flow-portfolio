@@ -3,6 +3,7 @@ import { ArrowDown, Download, ExternalLink } from "lucide-react";
 import { personalInfo } from "../data/portfolioData";
 import { BackForthTyping } from "./BackForthTyping";
 import profileImage from "../assets/CAM00614_Original.jpeg";
+import { ViewCounter } from "./ViewCounter";
 
 export const Hero: React.FC = () => {
   const [showContent, setShowContent] = useState(false);
@@ -38,13 +39,16 @@ export const Hero: React.FC = () => {
           </div>
 
           <div className="space-y-4">
-            <h1
-              className={`text-4xl md:text-6xl font-bold text-gray-900 dark:text-white transition-all duration-700 ${
-                showContent ? "animate-fade-in-up" : "opacity-0 translate-y-8"
-              }`}
-            >
-              {personalInfo.name}
-            </h1>
+            <div className="flex justify-between items-center">
+              <h1
+                className={`text-4xl md:text-6xl font-bold text-gray-900 dark:text-white transition-all duration-700 ${
+                  showContent ? "animate-fade-in-up" : "opacity-0 translate-y-8"
+                }`}
+              >
+                {personalInfo.name}
+              </h1>
+              <ViewCounter />
+            </div>
 
             <div
               className={`text-xl md:text-2xl text-gray-600 dark:text-gray-300 transition-all duration-700 delay-300 ${
