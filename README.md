@@ -158,39 +158,38 @@ This project uses **two branches**:
 
 The GitHub Actions workflow (`.github/workflows/deploy.yml`) triggers on every push to `gh-pages`. It builds the project using Firebase secrets stored in GitHub, then overwrites `gh-pages` with the compiled `dist/` output via `peaceiris/actions-gh-pages`.
 
-### Option A — Manual deploy (recommended, always works)
+### Option A — CI/CD deploy (normal workflow)
 
-Use this when the CI is broken or you want to deploy immediately:
+Just push to `main` — the workflow triggers automatically, builds the project, and deploys to `gh-pages`.
 
 ```bash
-# 1. Make your changes on main, then build locally
+git add .
+git commit -m "your message"
+git push origin main
+```
+
+Track progress at:
+`https://github.com/yashpreetbathla/notion-flow-portfolio/actions`
+
+> Requires Firebase secrets to be set in GitHub repo settings → Secrets and variables → Actions.
+
+### Option B — Manual deploy (fallback if CI fails)
+
+```bash
+# 1. Build locally
 npm run build
 
-# 2. Deploy dist/ directly to gh-pages
+# 2. Push dist/ directly to gh-pages
 npx gh-pages -d dist --message "Deploy built portfolio"
 ```
 
-Done. GitHub Pages will update within ~1–2 minutes.
-
-### Option B — CI/CD deploy (via GitHub Actions)
-
-> **Warning:** This requires Firebase secrets to be configured in GitHub repo settings → Secrets and variables → Actions.
-
-The workflow does NOT trigger on `main`. To trigger it, you must push source code to `gh-pages`:
-
-```bash
-# Push main branch code to gh-pages (force required due to unrelated histories)
-git push origin main:gh-pages --force
-```
-
-The CI will then build and redeploy automatically. Track progress at:
-`https://github.com/yashpreetbathla/notion-flow-portfolio/actions`
+GitHub Pages updates within ~1–2 minutes.
 
 ### What broke before and why
 
-Pushing `main` to `gh-pages` with `--force` replaces the built files with raw source code. If the CI then fails (e.g. secrets missing, workflow error), GitHub Pages ends up serving unbuilt source — the page loads but React never runs, showing only the HTML title.
+The old workflow was triggered by pushes to `gh-pages` instead of `main`. This meant you had to force-push `main` → `gh-pages` to trigger CI. If the CI then failed, GitHub Pages served raw unbuilt source — React never ran, showing only the page title.
 
-**Fix:** Always fall back to Option A (manual build + `npx gh-pages -d dist`) if the CI doesn't deploy successfully.
+The workflow now triggers on `main`, so a normal push is all it takes.
 
 ## 📝 License
 
