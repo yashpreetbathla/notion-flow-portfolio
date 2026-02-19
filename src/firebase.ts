@@ -12,9 +12,18 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+
+// getDatabase throws synchronously if databaseURL is missing/malformed.
+// Catch it here so the rest of the app still renders.
+let database: ReturnType<typeof getDatabase> | null = null;
+try {
+  database = getDatabase(app);
+} catch (e) {
+  console.warn("Firebase Realtime Database unavailable — view counter disabled.", e);
+}
 
 export const incrementViewCount = async (): Promise<number> => {
+  if (!database) return 0;
   try {
     const viewsRef = ref(database, "portfolio/views");
     const snapshot = await get(viewsRef);
