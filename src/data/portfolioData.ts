@@ -110,6 +110,17 @@ export const achievements: Achievement[] = [
 
 export const projects: Project[] = [
   {
+    id: "6",
+    title: "InkLayer – Chrome Annotation Extension",
+    description:
+      "A Chrome Extension (Manifest V3) that overlays a full-page ink canvas on any webpage. Draw freehand, add shapes and arrows, then save or copy a composited screenshot with annotations.",
+    technologies: ["Chrome Extension", "JavaScript", "Canvas API", "Manifest V3", "HTML/CSS"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=400&fit=crop",
+    githubUrl: "https://github.com/yashpreetbathla/InkLayer",
+    featured: true,
+  },
+  {
     id: "1",
     title: "CodEngine - Interactive Online Judge",
     description:
