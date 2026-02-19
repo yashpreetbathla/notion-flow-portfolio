@@ -11,13 +11,10 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-// Only initialise Firebase when a valid config is present
-const isConfigured = !!firebaseConfig.apiKey && !!firebaseConfig.databaseURL;
-const app = isConfigured ? initializeApp(firebaseConfig) : null;
-const database = isConfigured && app ? getDatabase(app) : null;
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 export const incrementViewCount = async (): Promise<number> => {
-  if (!database) return 0;
   try {
     const viewsRef = ref(database, "portfolio/views");
     const snapshot = await get(viewsRef);
