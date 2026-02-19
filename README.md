@@ -150,12 +150,47 @@ VITE_FIREBASE_ENABLE_VIEW_COUNTER="true"  # Set to "false" to disable the view c
 
 ## 🚀 Deployment
 
-For GitHub Pages deployment:
+This project uses **two branches**:
+- `main` — source code (edit here)
+- `gh-pages` — deployed built files (never edit manually)
 
-1. Push your code to GitHub
-2. Go to repository settings -> Pages
-3. Select the branch and build command
-4. Wait for the deployment to complete
+### How deployment works
+
+The GitHub Actions workflow (`.github/workflows/deploy.yml`) triggers on every push to `gh-pages`. It builds the project using Firebase secrets stored in GitHub, then overwrites `gh-pages` with the compiled `dist/` output via `peaceiris/actions-gh-pages`.
+
+### Option A — Manual deploy (recommended, always works)
+
+Use this when the CI is broken or you want to deploy immediately:
+
+```bash
+# 1. Make your changes on main, then build locally
+npm run build
+
+# 2. Deploy dist/ directly to gh-pages
+npx gh-pages -d dist --message "Deploy built portfolio"
+```
+
+Done. GitHub Pages will update within ~1–2 minutes.
+
+### Option B — CI/CD deploy (via GitHub Actions)
+
+> **Warning:** This requires Firebase secrets to be configured in GitHub repo settings → Secrets and variables → Actions.
+
+The workflow does NOT trigger on `main`. To trigger it, you must push source code to `gh-pages`:
+
+```bash
+# Push main branch code to gh-pages (force required due to unrelated histories)
+git push origin main:gh-pages --force
+```
+
+The CI will then build and redeploy automatically. Track progress at:
+`https://github.com/yashpreetbathla/notion-flow-portfolio/actions`
+
+### What broke before and why
+
+Pushing `main` to `gh-pages` with `--force` replaces the built files with raw source code. If the CI then fails (e.g. secrets missing, workflow error), GitHub Pages ends up serving unbuilt source — the page loads but React never runs, showing only the HTML title.
+
+**Fix:** Always fall back to Option A (manual build + `npx gh-pages -d dist`) if the CI doesn't deploy successfully.
 
 ## 📝 License
 
