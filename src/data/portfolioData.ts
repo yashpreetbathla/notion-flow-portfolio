@@ -110,6 +110,26 @@ export const achievements: Achievement[] = [
 
 export const projects: Project[] = [
   {
+    id: "7",
+    title: "MCP Accessibility Bridge",
+    description:
+      "Open-source MCP server that connects Claude Desktop to Chrome via CDP, exposing the full ARIA accessibility tree. Ask Claude in plain English — get production-ready Playwright, Selenium, Cypress, and WebdriverIO selectors instantly. Published on npm.",
+    technologies: [
+      "TypeScript",
+      "Node.js",
+      "Chrome CDP",
+      "Playwright",
+      "MCP",
+      "puppeteer-core",
+      "Zod",
+    ],
+    imageUrl:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+    liveUrl: "https://www.npmjs.com/package/mcp-accessibility-bridge",
+    githubUrl: "https://github.com/yashpreetbathla/mcp-accessibility-bridge",
+    featured: true,
+  },
+  {
     id: "6",
     title: "InkLayer – Chrome Annotation Extension",
     description:
@@ -214,7 +234,7 @@ export const skills: Skill[] = [
   },
   {
     category: "Testing & Tools",
-    items: ["Jest", "Cypress", "Cucumber", "Webpack", "Vite", "Git"],
+    items: ["Jest", "Playwright", "Cypress", "Cucumber", "MCP", "Chrome CDP", "Webpack", "Vite", "Git"],
   },
   {
     category: "APIs & Database",
