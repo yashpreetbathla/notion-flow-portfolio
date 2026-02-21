@@ -236,11 +236,11 @@ export const experiences: Experience[] = [
     position: "Senior Member of Technical Staff",
     duration: "Apr 2023 - Present",
     description: [
+      "Led end-to-end frontend initiatives, guiding teams to deliver scalable, high-performance UI systems while mentoring engineers and driving technical growth through design and code reviews.",
       "Built Tessell's config-driven demo platform from scratch, simulating real database workflows and auto-syncing with main product features; reduced demo infra cost $40,000 → $1/month and enabled deterministic, glitch-free demos for customers, Sales, Marketing, and Leadership.",
       "Developed a common NPM library for Tessell, standardizing UI components and utilities, improving code reuse, and optimizing re-renders to deliver a more responsive and performant application.",
       "Designed a scalable UI testing infrastructure using Playwright + AI (MCP)-generated test flows, achieving complete critical path coverage in 2 days and enabling high-confidence releases in production CI.",
       "Strengthened runtime reliability by introducing centralized Axios interceptors, consistent error normalization, and structured retry handling in the network layer; independently reduced initial load time by 40% through CDN offloading, tree-shaking, and route-level code splitting.",
-      "Architected and integrated an AI-powered contextual assistant for Tessell's database platform, designing streaming conversational UI, deterministic structured-response rendering, and safety guardrails for action execution — enhancing self-serve operations and minimizing manual support dependency.",
       "Authored Cursor AI coding rules capturing architectural patterns and best practices, allowing engineers to generate production-aligned code and significantly reducing repetitive review feedback.",
     ],
     technologies: [
