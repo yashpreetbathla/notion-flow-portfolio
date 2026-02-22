@@ -1,347 +1,40 @@
-# 📱 Modern Portfolio Template
+# Yashpreet Bathla — Portfolio
 
-A modern, responsive portfolio website template built with React, TypeScript, and Tailwind CSS.
+My personal portfolio built with React, TypeScript, and Tailwind CSS. Live at [yashpreetbathla.github.io/notion-flow-portfolio](https://yashpreetbathla.github.io/notion-flow-portfolio/).
 
-## 🚀 Features
+## 🚀 Featured Projects
 
-- 🎨 Clean and modern design
-- 📱 Fully responsive layout
-- 🔍 SEO-friendly structure
-- 📊 Optional view counter (using Firebase)
-- 🎨 Customizable color scheme
-- 📸 Easy image customization
-- 📝 Easy content customization
+| Project | Description | Live |
+|---------|-------------|------|
+| **Frontend Interview Prep** | 100+ curated frontend interview questions with step-by-step explanations, live code challenges, and progress tracking | [Live](https://yashpreetbathla.github.io/frontend-interview-prep) |
+| **MCP Accessibility Bridge** | Open-source MCP server connecting Claude Desktop to Chrome via CDP for AI-powered selector generation | [npm](https://www.npmjs.com/package/mcp-accessibility-bridge) |
+| **InkLayer** | Chrome Extension for freehand annotation on any webpage with screenshot export | [GitHub](https://github.com/yashpreetbathla/InkLayer) |
+| **DevTinder** | Real-time developer networking platform with Tinder-style swiping and Socket.IO messaging | [GitHub](https://github.com/yashpreetbathla/devTinder-web) |
+| **SplitUp** | Full-featured expense tracking and bill-splitting app with real-time balance summaries | [GitHub](https://github.com/yashpreetbathla/splitUp-web) |
 
 ## 🛠️ Tech Stack
 
-- **Framework**: React
+- **Framework**: React + Vite
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Build Tool**: Vite
-- **Components**: shadcn-ui
-- **Database**: Firebase (optional)
+- **Styling**: Tailwind CSS + shadcn-ui
+- **Hosting**: GitHub Pages
+- **Analytics**: Firebase Realtime Database (view counter)
 
-## 📦 Installation
+## 🏃 Run Locally
 
-1. Clone the repository:
 ```bash
-git clone <YOUR_GIT_URL>
-cd <YOUR_PROJECT_NAME>
-```
-
-2. Install dependencies:
-```bash
+git clone https://github.com/yashpreetbathla/notion-flow-portfolio.git
+cd notion-flow-portfolio
 npm install
-```
-
-3. Start development server:
-```bash
 npm run dev
 ```
 
-## 🔧 Customization
+## 🚀 Deploy
 
-### 🖼️ Images
+Push to `main` — GitHub Actions builds and deploys to GitHub Pages automatically.
 
-1. **Profile Image**:
-   - Place your profile image in the `src/assets` directory
-   - Update the `profileImageUrl` in `src/data/portfolioData.ts`
-   - The image should be a square (1:1 ratio) for best results
+## 📬 Contact
 
-2. **Project Images**:
-   - Add your project images to `src/assets/projects`
-   - Update the image paths in your project data in `src/data/projects.ts`
-   - Images should be optimized for web (recommended size: 800x600px)
-
-### 📝 Content
-
-1. **Personal Information**:
-   - Edit `src/data/portfolioData.ts` to update:
-     - Your name
-     - Profile image URL
-     - Social media links
-     - Contact information
-
-2. **Work Experience**:
-   - Edit `src/data/experience.ts` to add or modify:
-     - Company names
-     - Job titles
-     - Dates
-     - Achievements
-     - Technologies used
-
-3. **Projects**:
-   - Edit `src/data/projects.ts` to add or modify:
-     - Project names
-     - Descriptions
-     - Technologies used
-     - GitHub links
-     - Live demo links
-     - Featured images
-
-4. **Skills**:
-   - Edit `src/data/skills.ts` to add or modify:
-     - Programming languages
-     - Frameworks
-     - Tools
-     - Proficiency levels
-
-5. **Education**:
-   - Edit `src/data/education.ts` to add or modify:
-     - School names
-     - Degrees
-     - Dates
-     - Achievements
-
-### 🎨 Styling
-
-1. **Colors**:
-   - Update the color scheme in `src/tailwind.config.js`
-   - Modify the theme colors in `src/theme.ts`
-
-2. **Layout**:
-   - Adjust spacing and sizing in `src/styles/globals.css`
-   - Modify animations in `src/styles/animation.css`
-
-## 🔐 View Counter Setup (Optional)
-
-To enable the view counter feature:
-
-1. Create a Firebase project at https://console.firebase.google.com/
-2. Enable Realtime Database
-3. Add these security rules to your Realtime Database:
-```json
-{
-  "rules": {
-    "portfolio": {
-      "views": {
-        ".read": true,
-        ".write": "newData.val() === (data.exists() ? data.val() : 0) + 1",
-        ".validate": "newData.val() > 0 && newData.val() <= 1000000"
-      }
-    }
-  }
-}
-```
-
-4. Create a `.env` file with your Firebase credentials:
-```env
-VITE_FIREBASE_API_KEY="your-api-key"
-VITE_FIREBASE_AUTH_DOMAIN="your-auth-domain"
-VITE_FIREBASE_DATABASE_URL="your-database-url"
-VITE_FIREBASE_PROJECT_ID="your-project-id"
-VITE_FIREBASE_STORAGE_BUCKET="your-storage-bucket"
-VITE_FIREBASE_MESSAGING_SENDER_ID="your-messaging-sender-id"
-VITE_FIREBASE_APP_ID="your-app-id"
-VITE_FIREBASE_ENABLE_VIEW_COUNTER="true"  # Set to "false" to disable the view counter
-```
-
-5. If deploying to GitHub Pages:
-   - Go to GitHub repository settings -> Secrets and variables -> Actions
-   - Add these secrets with the same values as your `.env` file:
-   - VITE_FIREBASE_API_KEY
-   - VITE_FIREBASE_AUTH_DOMAIN
-   - VITE_FIREBASE_DATABASE_URL
-   - VITE_FIREBASE_PROJECT_ID
-   - VITE_FIREBASE_STORAGE_BUCKET
-   - VITE_FIREBASE_MESSAGING_SENDER_ID
-   - VITE_FIREBASE_APP_ID
-   - VITE_FIREBASE_ENABLE_VIEW_COUNTER (set to "true" or "false")
-
-## 🚀 Deployment
-
-This project uses **two branches**:
-- `main` — source code (edit here)
-- `gh-pages` — deployed built files (never edit manually)
-
-### How deployment works
-
-The GitHub Actions workflow (`.github/workflows/deploy.yml`) triggers on every push to `gh-pages`. It builds the project using Firebase secrets stored in GitHub, then overwrites `gh-pages` with the compiled `dist/` output via `peaceiris/actions-gh-pages`.
-
-### Option A — CI/CD deploy (normal workflow)
-
-Just push to `main` — the workflow triggers automatically, builds the project, and deploys to `gh-pages`.
-
-```bash
-git add .
-git commit -m "your message"
-git push origin main
-```
-
-Track progress at:
-`https://github.com/yashpreetbathla/notion-flow-portfolio/actions`
-
-> Requires Firebase secrets to be set in GitHub repo settings → Secrets and variables → Actions.
-
-### Option B — Manual deploy (fallback if CI fails)
-
-```bash
-# 1. Build locally
-npm run build
-
-# 2. Push dist/ directly to gh-pages
-npx gh-pages -d dist --message "Deploy built portfolio"
-```
-
-GitHub Pages updates within ~1–2 minutes.
-
-### What broke before and why
-
-The old workflow was triggered by pushes to `gh-pages` instead of `main`. This meant you had to force-push `main` → `gh-pages` to trigger CI. If the CI then failed, GitHub Pages served raw unbuilt source — React never ran, showing only the page title.
-
-The workflow now triggers on `main`, so a normal push is all it takes.
-
-## 📝 License
-
-MIT License - feel free to use this template for your portfolio!
-
-> "Code is read more often than it is written — so make it beautiful." ✨
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-## 🖼️ Customizing Images
-
-1. **Profile Image**:
-   - Place your profile image in the `src/assets` directory
-   - Update the `profileImageUrl` in `src/data/portfolioData.ts`
-   - The image should be a square (1:1 ratio) for best results
-
-2. **Project Images**:
-   - Add your project images to `src/assets/projects`
-   - Update the image paths in your project data in `src/data/projects.ts`
-   - Images should be optimized for web (recommended size: 800x600px)
-
-## 📝 Customizing Portfolio Data
-
-1. **Personal Information**:
-   - Edit `src/data/portfolioData.ts` to update:
-     - Your name
-     - Profile image URL
-     - Social media links
-     - Contact information
-
-2. **Work Experience**:
-   - Edit `src/data/experience.ts` to add or modify:
-     - Company names
-     - Job titles
-     - Dates
-     - Achievements
-     - Technologies used
-
-3. **Projects**:
-   - Edit `src/data/projects.ts` to add or modify:
-     - Project names
-     - Descriptions
-     - Technologies used
-     - GitHub links
-     - Live demo links
-     - Featured images
-
-4. **Skills**:
-   - Edit `src/data/skills.ts` to add or modify:
-     - Programming languages
-     - Frameworks
-     - Tools
-     - Proficiency levels
-
-5. **Education**:
-   - Edit `src/data/education.ts` to add or modify:
-     - School names
-     - Degrees
-     - Dates
-     - Achievements
-
-## 🎨 Styling Customization
-
-1. **Colors**:
-   - Update the color scheme in `src/tailwind.config.js`
-   - Modify the theme colors in `src/theme.ts`
-
-2. **Layout**:
-   - Adjust spacing and sizing in `src/styles/globals.css`
-   - Modify animations in `src/styles/animation.css`
-
-## 🤝 Let's Connect
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Optional: Set up view counter (skip if not needed)
-# 1. Create a Firebase project at https://console.firebase.google.com/
-# 2. Enable Realtime Database
-# 3. Add these security rules to your Realtime Database:
-{
-  "rules": {
-    "portfolio": {
-      "views": {
-        ".read": true,
-        ".write": "newData.val() === (data.exists() ? data.val() : 0) + 1",
-        ".validate": "newData.val() > 0 && newData.val() <= 1000000"
-      }
-    }
-  }
-}
-
-# 4. Create a .env file with your Firebase credentials:
-VITE_FIREBASE_API_KEY="your-api-key"
-VITE_FIREBASE_AUTH_DOMAIN="your-auth-domain"
-VITE_FIREBASE_DATABASE_URL="your-database-url"
-VITE_FIREBASE_PROJECT_ID="your-project-id"
-VITE_FIREBASE_STORAGE_BUCKET="your-storage-bucket"
-VITE_FIREBASE_MESSAGING_SENDER_ID="your-messaging-sender-id"
-VITE_FIREBASE_APP_ID="your-app-id"
-
-# 5. In your Hero component, set showViews={true} to enable the view counter
-# 6. If you're deploying to GitHub Pages:
-#    - Go to GitHub repository settings -> Secrets and variables -> Actions
-#    - Add these secrets with the same values as your .env file:
-#      VITE_FIREBASE_API_KEY
-#      VITE_FIREBASE_AUTH_DOMAIN
-#      VITE_FIREBASE_DATABASE_URL
-#      VITE_FIREBASE_PROJECT_ID
-#      VITE_FIREBASE_STORAGE_BUCKET
-#      VITE_FIREBASE_MESSAGING_SENDER_ID
-#      VITE_FIREBASE_APP_ID
-#      VITE_FIREBASE_ENABLE_VIEW_COUNTER (set to "true" or "false")
-```
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Email**: yashpreetbathla@gmail.com
+- **LinkedIn**: [linkedin.com/in/yashpreetbathla](https://www.linkedin.com/in/yashpreetbathla/)
+- **GitHub**: [github.com/yashpreetbathla](https://github.com/yashpreetbathla)
