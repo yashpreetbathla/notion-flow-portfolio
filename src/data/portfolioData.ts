@@ -110,6 +110,25 @@ export const achievements: Achievement[] = [
 
 export const projects: Project[] = [
   {
+    id: "8",
+    title: "Frontend Interview Prep",
+    description:
+      "Free, open-source frontend interview prep platform with 100+ curated questions on HTML/CSS, JavaScript, React, and System Design. Features step-by-step explanations, live code challenges, progress tracking via localStorage, JS output reveal UX, and GitHub Pages hosting.",
+    technologies: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "GitHub Actions",
+      "GitHub Pages",
+    ],
+    imageUrl:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop",
+    liveUrl: "https://yashpreetbathla.github.io/frontend-interview-prep",
+    githubUrl: "https://github.com/yashpreetbathla/frontend-interview-prep",
+    featured: true,
+  },
+  {
     id: "7",
     title: "MCP Accessibility Bridge",
     description:
