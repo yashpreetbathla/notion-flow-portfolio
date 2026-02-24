@@ -111,20 +111,19 @@ export const achievements: Achievement[] = [
 export const projects: Project[] = [
   {
     id: "8",
-    title: "Frontend Interview Prep",
+    title: "UI Sheet",
     description:
-      "Free, open-source frontend interview prep platform with 100+ curated questions on HTML/CSS, JavaScript, React, and System Design. Features step-by-step explanations, live code challenges, progress tracking via localStorage, JS output reveal UX, and GitHub Pages hosting.",
+      "The Striver's sheet for frontend engineers — 100+ curated questions on HTML/CSS, JavaScript, React, and System Design. Features Notion-like answers, cheat sheets, progress tracking via localStorage, JS output reveal UX, and company tags.",
     technologies: [
       "Next.js 15",
       "TypeScript",
       "Tailwind CSS",
       "Framer Motion",
-      "GitHub Actions",
-      "GitHub Pages",
+      "Vercel",
     ],
     imageUrl:
       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop",
-    liveUrl: "https://yashpreetbathla.github.io/frontend-interview-prep",
+    liveUrl: "https://uisheet.com",
     githubUrl: "https://github.com/yashpreetbathla/frontend-interview-prep",
     featured: true,
   },
