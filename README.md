@@ -6,7 +6,7 @@ My personal portfolio built with React, TypeScript, and Tailwind CSS. Live at [y
 
 | Project | Description | Live |
 |---------|-------------|------|
-| **Frontend Interview Prep** | 100+ curated frontend interview questions with step-by-step explanations, live code challenges, and progress tracking | [Live](https://yashpreetbathla.github.io/frontend-interview-prep) |
+| **UI Sheet** | The Striver's sheet for frontend engineers — 100+ JS, React, HTML/CSS & System Design interview questions with cheat sheets and progress tracking | [uisheet.com](https://uisheet.com) |
 | **MCP Accessibility Bridge** | Open-source MCP server connecting Claude Desktop to Chrome via CDP for AI-powered selector generation | [npm](https://www.npmjs.com/package/mcp-accessibility-bridge) |
 | **InkLayer** | Chrome Extension for freehand annotation on any webpage with screenshot export | [GitHub](https://github.com/yashpreetbathla/InkLayer) |
 | **DevTinder** | Real-time developer networking platform with Tinder-style swiping and Socket.IO messaging | [GitHub](https://github.com/yashpreetbathla/devTinder-web) |
