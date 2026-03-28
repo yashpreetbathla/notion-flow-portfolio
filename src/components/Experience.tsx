@@ -1,110 +1,132 @@
-
-import React, { useEffect, useRef, useState } from 'react';
-import { Calendar } from 'lucide-react';
-import { experiences } from '../data/portfolioData';
+import React, { useRef } from "react";
+import { Calendar } from "lucide-react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { experiences } from "../data/portfolioData";
+import { AnimatedText } from "./AnimatedText";
 
 export const Experience: React.FC = () => {
-  const [visibleItems, setVisibleItems] = useState<Set<string>>(new Set());
-  const sectionRef = useRef<HTMLElement>(null);
-  const itemRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const timelineRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('data-id');
-            if (id) {
-              setVisibleItems(prev => new Set([...prev, id]));
-            }
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    Object.values(itemRefs.current).forEach(ref => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => observer.disconnect();
-  }, []);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 0.85", "end 0.3"],
+  });
+  const lineScaleY = useSpring(scrollYProgress, { stiffness: 80, damping: 25 });
 
   return (
-    <section ref={sectionRef} id="experience" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="experience" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Work Experience
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        {/* Heading */}
+        <div className="text-center mb-16">
+          <AnimatedText
+            text="Work Experience"
+            as="h2"
+            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 justify-center"
+          />
+          <motion.p
+            className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             My professional journey and the companies I've had the privilege to work with.
-          </p>
+          </motion.p>
         </div>
 
-        <div className="space-y-8">
-          {experiences.map((experience, index) => (
-            <div
-              key={experience.id}
-              ref={el => itemRefs.current[experience.id] = el}
-              data-id={experience.id}
-              className={`relative bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-500 hover:scale-[1.02] ${
-                visibleItems.has(experience.id) 
-                  ? 'animate-fade-in-up opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-8'
-              }`}
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              {index !== experiences.length - 1 && (
-                <div className="absolute left-6 top-full w-px h-8 bg-gradient-to-b from-blue-400 to-transparent"></div>
-              )}
-              
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    {experience.position}
-                  </h3>
-                  <p className="text-lg text-blue-600 dark:text-blue-400 font-medium">
-                    {experience.company}
-                  </p>
-                </div>
-                
-                <div className="flex items-center space-x-2 text-gray-500 dark:text-gray-400 mt-2 md:mt-0 group">
-                  <Calendar className="w-4 h-4 group-hover:animate-pulse" />
-                  <span>{experience.duration}</span>
-                </div>
-              </div>
+        {/* Timeline */}
+        <div className="relative" ref={timelineRef}>
+          {/* Self-drawing vertical line */}
+          <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-700 overflow-hidden">
+            <motion.div
+              className="w-full bg-gradient-to-b from-blue-500 via-indigo-500 to-violet-500 origin-top"
+              style={{ scaleY: lineScaleY, height: "100%" }}
+            />
+          </div>
 
-              <ul className="space-y-2 mb-4">
-                {experience.description.map((item, idx) => (
-                  <li 
-                    key={idx} 
-                    className={`text-gray-600 dark:text-gray-300 flex items-start transition-all duration-300 ${
-                      visibleItems.has(experience.id) ? 'animate-fade-in-up' : 'opacity-0'
-                    }`}
-                    style={{ animationDelay: `${index * 150 + idx * 100}ms` }}
-                  >
-                    <span className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+          <div className="space-y-8 pl-12 md:pl-20">
+            {experiences.map((experience, index) => (
+              <motion.div
+                key={experience.id}
+                initial={{ opacity: 0, x: -36 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.55, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
+                whileHover={{ scale: 1.012, transition: { duration: 0.2 } }}
+                className="relative bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow duration-300"
+              >
+                {/* Timeline dot */}
+                <motion.div
+                  className="absolute -left-[2.9rem] md:-left-[4.6rem] top-7 w-3 h-3 rounded-full bg-blue-500 ring-4 ring-gray-50 dark:ring-gray-800"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ type: "spring", stiffness: 400, damping: 18, delay: index * 0.08 + 0.2 }}
+                />
 
-              <div className="flex flex-wrap gap-2">
-                {experience.technologies.map((tech, techIndex) => (
-                  <span
-                    key={tech}
-                    className={`px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-gray-200 dark:border-gray-600 hover:scale-105 transition-all duration-200 cursor-default ${
-                      visibleItems.has(experience.id) ? 'animate-scale-in' : 'opacity-0 scale-90'
-                    }`}
-                    style={{ animationDelay: `${index * 150 + techIndex * 50 + 300}ms` }}
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                      {experience.position}
+                    </h3>
+                    <motion.p
+                      className="text-lg text-blue-600 dark:text-blue-400 font-medium"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.08 + 0.25 }}
+                    >
+                      {experience.company}
+                    </motion.p>
+                  </div>
+                  <div className="flex items-center space-x-2 text-gray-500 dark:text-gray-400 mt-2 md:mt-0">
+                    <Calendar className="w-4 h-4" />
+                    <span>{experience.duration}</span>
+                  </div>
+                </div>
+
+                <ul className="space-y-2 mb-4">
+                  {experience.description.map((desc, idx) => (
+                    <motion.li
+                      key={idx}
+                      className="text-gray-600 dark:text-gray-300 flex items-start"
+                      initial={{ opacity: 0, x: -12 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.08 + 0.15 + idx * 0.06, duration: 0.35 }}
+                    >
+                      <motion.span
+                        className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"
+                        animate={{ scale: [1, 1.35, 1] }}
+                        transition={{ repeat: Infinity, duration: 2.8, delay: idx * 0.5, ease: "easeInOut" }}
+                      />
+                      {desc}
+                    </motion.li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap gap-2">
+                  {experience.technologies.map((tech, techIdx) => (
+                    <motion.span
+                      key={tech}
+                      className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-gray-200 dark:border-gray-600 cursor-default"
+                      initial={{ opacity: 0, scale: 0.75 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      transition={{
+                        default: { type: "spring", stiffness: 400, damping: 18 },
+                        opacity: { delay: index * 0.08 + techIdx * 0.04 + 0.3, duration: 0.25 },
+                        scale: { delay: index * 0.08 + techIdx * 0.04 + 0.3, duration: 0.25 },
+                      }}
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

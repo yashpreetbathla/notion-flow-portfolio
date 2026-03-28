@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, get } from "firebase/database";
 
-// Initialize Firebase with environment variables
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -12,12 +11,14 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase app
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+// Only initialise when credentials are present (avoids fatal crash in local dev)
+const isConfigured = !!firebaseConfig.projectId && !!firebaseConfig.databaseURL;
 
-// Function to get and increment view count
-export const incrementViewCount = async () => {
+const app = isConfigured ? initializeApp(firebaseConfig) : null;
+const database = isConfigured && app ? getDatabase(app) : null;
+
+export const incrementViewCount = async (): Promise<number> => {
+  if (!database) return 0;
   try {
     const viewsRef = ref(database, "portfolio/views");
     const snapshot = await get(viewsRef);

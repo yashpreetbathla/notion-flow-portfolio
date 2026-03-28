@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide default cursor only on precise-pointer (mouse) devices so the custom cursor takes over.
+   Touch / stylus-only devices keep their native cursor behaviour. */
+@media (pointer: fine) and (hover: hover) {
+  * {
+    cursor: none !important;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
