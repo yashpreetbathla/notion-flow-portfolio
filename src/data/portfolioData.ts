@@ -292,18 +292,6 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    id: "2",
-    company: "Yugabyte",
-    position: "Software Engineer",
-    duration: "Oct 2022 - Apr 2023",
-    description: [
-      "Implemented Role-based access control across YBM Cloud UI",
-      "Developed an intuitive promo-code engine integrated with the CMS and frontend",
-      "Enhanced user experience through modern React patterns and TypeScript",
-    ],
-    technologies: ["React", "TypeScript", "GraphQL", "REST APIs"],
-  },
-  {
     id: "3",
     company: "Microsoft",
     position: "Software Engineer",
